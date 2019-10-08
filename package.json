@@ -3,15 +3,18 @@
   "version": "1.0.0",
   "description": "vanilla and nodejs",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
+  "author": "JBE",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/node": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
     "express": "^4.17.1"
   },
-  "scripts":{
-    "start":"node index.js"
+  "scripts": {
+    "start": "nodemon --exec babel-node index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
   }
 }
