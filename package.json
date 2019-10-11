@@ -1,24 +1,32 @@
 {
-  "name": "vbideo",
+  "name": "bvideo",
   "version": "1.0.0",
-  "description": "vanilla and nodejs",
-  "main": "index.js",
-  "author": "JBE",
-  "license": "ISC",
+  "description": "",
+  "main": "app.js",
   "dependencies": {
-    "@babel/core": "^7.6.2",
-    "@babel/node": "^7.6.2",
-    "@babel/preset-env": "^7.6.2",
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "helmet": "^3.21.1",
     "morgan": "^1.9.1"
   },
-  "scripts": {
-    "start": "nodemon --exec babel-node index.js"
-  },
   "devDependencies": {
     "nodemon": "^1.19.3"
-  }
+  },
+  "scripts": {
+    "start": "nodemon --exec babel-node init.js --dalay 2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LEEJUNB/bbideo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LEEJUNB/bbideo/issues"
+  },
+  "homepage": "https://github.com/LEEJUNB/bbideo#readme"
 }
