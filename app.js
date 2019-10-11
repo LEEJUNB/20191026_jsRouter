@@ -4,25 +4,18 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 
-const app = express()
-const port = 4000;
-
-const handleListening= () =>
-    console.log(`Listening on : http://localhost:${port}`);
+const app = express();
 
 const handleHome = (req,res) => res.send("god Home!"); // 마지막 함수이기에 next키가 없다.
 const handleProfile = (req,res) => res.send("What'up man");
 
 app.use(cookieParser()); // 쿠키에 유저 정보를 저장한다. 왜냐? session을 다루기위해서
 app.use(bodyParser.json()); // form을 다룰수있어야한다.
-app.use(bodyParser.urlencoded()); // form을 다룰수있어야한다.
-app.use(morgan("combined"));  // globally middleware
-app.use(helmet());
+app.use(bodyParser.urlencoded({extended:true})); // form을 다룰수있어야한다.
+app.use(helmet()); // 노드 보안 미들웨어
+app.use(morgan("dev"));  // 모든 것을 로깅(기록)하는 미들웨어
 
-const middleware = (req,res,next) => { // 미들웨어로 미들웨어 연결을 끊을수있다
-    res.send("NoNoNo");
-}
-
-app.get("/",middleware,handleHome); // 미들웨어를 끊어보자
+app.get("/",handleHome); // 미들웨어를 끊어보자
 app.get("/profile",handleProfile);
-app.listen(port, handleListening);
+
+export default app; // 누군가 내 파일을 불러 올 때 app 객체를 해준다는 의미. app 객체란 앞에서 설정한 app.use, app.get과 같은 큰 덩어리. 
