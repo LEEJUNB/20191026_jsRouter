@@ -8,7 +8,7 @@ const SEARCH = "/search";
 // Users
 const USERS = "/users";
 const USER_DETAIL = "/:id"; // id값은 변할수있기에 :id로 입력
-const EDIT_PROFILE = "edit-profile";
+const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
 
 // Videos
@@ -20,8 +20,8 @@ const DELETE_VIDEO = "/:id/delete";
 
 // object만들기
 const routes = {
-    home : HOME,
-    join : JOIN,
+    home : HOME, // "/"
+    join : JOIN, // "/join"
     login : LOGIN,
     logout : LOGOUT,
     search : SEARCH,

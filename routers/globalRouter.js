@@ -1,12 +1,15 @@
 import express from "express";
 import routes from "../routes";
+import { home, search } from "../controllers/videoController";
+import { join, login, logout } from "../controllers/userController";
 
 const globalRouter = express.Router();
 
-globalRouter.get(routes.home, (req,res) => res.send('HOME')); // localhost:4000/ 일때 작동
-globalRouter.get(routes.join, (req,res) => res.send('JOIN')); // localhost:4000/join 일때 작동
-globalRouter.get(routes.login, (req,res) => res.send('LOGIN'));
-globalRouter.get(routes.logout, (req,res) => res.send('LOGOUT'));
-globalRouter.get(routes.search, (req,res) => res.send('SEARCH'));
+globalRouter.get(routes.home, home); // videoController.js
+globalRouter.get(routes.search, search); // videoController.js
+globalRouter.get(routes.join, join); // userController.js
+globalRouter.get(routes.login, login); // userController.js
+globalRouter.get(routes.logout, logout); // userController.js
+
 
 export default globalRouter;
