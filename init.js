@@ -1,7 +1,6 @@
-import app from "./app";
+import app from './app'; // app.js모듈을 불러옴
 
-const port = 4000;
-
-const handleListening= () =>
-    console.log(`Listening on : http://localhost:${port}`);
-app.listen(port, handleListening);
+const PORT = 4000;
+const handleListening = () => 
+    console.log(`Listening on : http://localhost:${PORT}`);
+app.listen(PORT, handleListening);
