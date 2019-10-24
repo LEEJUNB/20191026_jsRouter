@@ -1,35 +1,23 @@
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
-import bodyparser from "body-parser";
-import cookieparser from "cookie-parser";
+import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
+import { userRouter } from "./router"; // default로 export한게 아니므로, 특정 라우터만 export했기에 이렇게 호출
 
 const app = express();
 
-const PORT = 3000;
+const handleHome = (req,res) => res.send("god Home!"); // 마지막 함수이기에 next키가 없다.
+const handleProfile = (req,res) => res.send("What'up man");
 
-const handleListening = () => console.log(`Listening on : http://localhost:${PORT}`);
+app.use(cookieParser()); // 쿠키에 유저 정보를 저장한다. 왜냐? session을 다루기위해서
+app.use(bodyParser.json()); // form을 다룰수있어야한다.
+app.use(bodyParser.urlencoded()); // form을 다룰수있어야한다.
+app.use(morgan("combined"));
+app.use(helmet());
 
-const handleHome = (req,res) => {
-    console.log("Homepage");
-    res.send("Last function!"); 
-}
-
-const handleProfile = (req,res) => res.send("Profile Page");
-
-const betweenHome = (req,res,next) => {
-    res.send("Middleware function");
-    next();
-}
-
-// 전역적미들웨어
-app.use(betweenHome);
-app.use(helmet);
-app.use(morgan("dev"));
-app.use(bodyparser);
-app.use(cookieparser);
-
-app.get("/", handleHome);
+app.get("/",handleHome);
 app.get("/profile",handleProfile);
+app.use("/user", userRouter); //// app.use에서 use의 의미는 누군가 /user 경로에 접속하면 이 router전체를 사용하겠다는 의미이다. 그럼 어디에 사용될까? 바로 userRouter.get("/",..)에서.  왜냐하면 누군가 /user에 접속하면 router가 사용되기 때문
 
-app.listen(PORT, handleListening);
+export default app;
