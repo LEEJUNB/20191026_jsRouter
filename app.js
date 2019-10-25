@@ -1,8 +1,8 @@
 import express from "express";
+import morgan from "morgan"; // 로깅하기_모슨일을했는지 기록 어떤접속이고 어디에접속하는지알수있음
 import helmet from "helmet";
-import morgan from "morgan";
-import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
 import { userRouter } from "./router"; // default로 export한게 아니므로, 특정 라우터만 export했기에 이렇게 호출
 
 const app = express();
